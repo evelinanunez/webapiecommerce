@@ -1,0 +1,65 @@
+﻿# Compiled binary and object files
+*.dll
+*.exe
+*.obj
+*.pdb
+*.cache
+*.ilk
+*.log
+*.vspscc
+*.vssscc
+
+# Folders
+bin/
+obj/
+TestResults/
+.vscode/
+.vs/
+out/
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Microsoft Azure Web App publish settings
+# Publish profile
+*.Publish.xml
+*.azurePubxml
+# Windows Azure Web App publish settings file
+PublishScripts/
+*.publishsettings
+
+# nuget packages
+*.nupkg
+# The packages folder can be ignored because of the presence of 'project.lock.json' or 'project.fragment.lock.json' files.
+# However, be aware that this will make 'nuget restore' operations slower.
+packages/
+# Uncomment if necessary however generally it will be regenerated when needed
+#!packages/repositories.config
+
+# npm package files
+node_modules/
+npm-debug.log
+yarn.lock
+
+# Mac files
+.DS_Store
+*.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# JetBrains Rider
+.idea/
+
+# Code coverage results
+coverage/
+
+# Python virtual environments
+.venv/

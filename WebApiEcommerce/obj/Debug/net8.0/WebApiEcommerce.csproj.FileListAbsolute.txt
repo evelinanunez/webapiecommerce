@@ -272,3 +272,4 @@ C:\WorkspaceVisualStudioEve\WebApiEcommerce\WebApiEcommerce\obj\Debug\net8.0\ref
 C:\WorkspaceVisualStudioEve\WebApiEcommerce\WebApiEcommerce\obj\Debug\net8.0\WebApiEcommerce.pdb
 C:\WorkspaceVisualStudioEve\WebApiEcommerce\WebApiEcommerce\obj\Debug\net8.0\WebApiEcommerce.genruntimeconfig.cache
 C:\WorkspaceVisualStudioEve\WebApiEcommerce\WebApiEcommerce\obj\Debug\net8.0\ref\WebApiEcommerce.dll
+C:\WorkspaceVisualStudioEve\WebApiEcommerce\WebApiEcommerce\obj\Debug\net8.0\WebApiEcommerce.sourcelink.json

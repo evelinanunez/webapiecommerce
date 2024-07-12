@@ -13,5 +13,7 @@ public partial class AdmUsuario
 
     public string Clave { get; set; } = null!;
 
+    public string? Apellido { get; set; }
+
     public virtual ICollection<Inscripcion> Inscripcions { get; set; } = new List<Inscripcion>();
 }

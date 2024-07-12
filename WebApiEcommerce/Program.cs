@@ -22,7 +22,7 @@ builder.Services.AddDbContext<DbecommerceContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CadenaSQL"));
 });
 
-builder.Services.AddSingleton<Utilidades>();
+builder.Services.AddScoped<Utilidades>();
 
 builder.Services.AddAuthentication(config => {
     config.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

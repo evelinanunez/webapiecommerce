@@ -27,7 +27,8 @@ public partial class DbecommerceContext : DbContext
 
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){ }
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -37,6 +38,9 @@ public partial class DbecommerceContext : DbContext
 
             entity.ToTable("ADM_Usuario");
 
+            entity.Property(e => e.Apellido)
+                .HasMaxLength(50)
+                .IsUnicode(false);
             entity.Property(e => e.Clave)
                 .HasMaxLength(100)
                 .IsUnicode(false);

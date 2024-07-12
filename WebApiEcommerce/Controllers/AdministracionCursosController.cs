@@ -24,22 +24,6 @@ namespace WebApiEcommerce.Controllers
             _utilidades = utilidades;
         }
 
-        [HttpPost]
-        [Route("Login")]
-        public async Task<IActionResult> Login(LoginDTO objeto )
-        {
-            var usuarioEncontrado = await _dbEcommerceContext.Usuarios
-                                                    .Where(u =>
-                                                        u.Correo == objeto.Correo &&
-                                                        u.Clave == _utilidades.encriptarConSHA256(objeto.Clave)
-                                                      ).FirstOrDefaultAsync();
-
-            if (usuarioEncontrado == null)
-                return StatusCode(StatusCodes.Status200OK, new { isSuccess = false, token = "" });
-            else
-                return StatusCode(StatusCodes.Status200OK, new { isSuccess = true, token = _utilidades.generarJWT(usuarioEncontrado) });
-        }
-
         
 
         [HttpPost]
@@ -49,6 +33,7 @@ namespace WebApiEcommerce.Controllers
 
             var modeloUsuario = new AdmUsuario {
                 Nombre = nuevoUsuario.Nombre,
+                Apellido = nuevoUsuario.Apellido,
                 Email = nuevoUsuario.Email,
                 Clave = _utilidades.encriptarConSHA256(nuevoUsuario.Clave)
             };
@@ -61,6 +46,24 @@ namespace WebApiEcommerce.Controllers
             else
                 return StatusCode(StatusCodes.Status200OK, new { isSuccess = false });
         }
+
+
+        [HttpPost]
+        [Route("Login")]
+        public async Task<IActionResult> Login(LoginCursosDTO objeto)
+        {
+            var usuarioEncontrado = await _dbEcommerceContext.AdmUsuarios
+                                                    .Where(u =>
+                                                        u.Email == objeto.Email
+                                                        && u.Clave == _utilidades.encriptarConSHA256(objeto.Clave)
+                                                      ).FirstOrDefaultAsync();
+
+            if (usuarioEncontrado == null)
+                return StatusCode(StatusCodes.Status200OK, new { isSuccess = false, token = "" });
+            else
+                return StatusCode(StatusCodes.Status200OK, new { isSuccess = true, nombreUsuario = usuarioEncontrado.Nombre, apellidoUsuario = usuarioEncontrado.Apellido, token = _utilidades.generarJWT(usuarioEncontrado) });
+        }
+
 
         [HttpGet]
         [Route("obtenerUsuarios")]

@@ -43,7 +43,28 @@ namespace WebApiEcommerce.Custom
             var jwtConfig = new JwtSecurityToken(
                 claims: userClaims,
                 expires: DateTime.UtcNow.AddMinutes(30),
-                signingCredentials:credentials
+                signingCredentials: credentials
+                );
+
+            return new JwtSecurityTokenHandler().WriteToken(jwtConfig);
+        }
+
+        public string generarJWT(AdmUsuario modeloUsuario)
+        {
+            //Se crea la información del usuario para el token
+            var userClaims = new[]
+            {
+                new Claim(ClaimTypes.NameIdentifier,modeloUsuario.IdUsuario.ToString()),
+                new Claim(ClaimTypes.Email,modeloUsuario.Email!),
+            };
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:key"]!));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
+
+            //se crea detalle del token
+            var jwtConfig = new JwtSecurityToken(
+                claims: userClaims,
+                expires: DateTime.UtcNow.AddMinutes(30),
+                signingCredentials: credentials
                 );
 
             return new JwtSecurityTokenHandler().WriteToken(jwtConfig);
